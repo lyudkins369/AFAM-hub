@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFAM Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">AFAM Hub</div>
+    <div class="right">
+      <span class="greeting" id="greeting">Ciao!</span>
+      <button class="btn btn-secondary btn-sm" id="btn-logout">Esci</button>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <button data-page="home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Home</button>
+    <button data-page="profilo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> Area Personale</button>
+    <button data-page="risorse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Gestione Risorse</button>
+    <button data-page="condivisione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg> Condivisione</button>
+    <button data-page="password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Modifica Password</button>
+  </nav>
+
+  <div class="container">
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="page-head"><div><h2 id="home-hello">Ciao!</h2><p>Benvenuto nel tuo spazio digitale AFAM.</p></div></div>
+      <div class="home-grid">
+        <div class="tile" data-page="profilo"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>Area Personale</h3><p>Visualizza e modifica il profilo formativo e artistico.</p></div>
+        <div class="tile" data-page="risorse"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h3>Gestione Risorse</h3><p>Carica e organizza i tuoi contenuti in sezioni e cartelle.</p></div>
+        <div class="tile" data-page="condivisione"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg></div><h3>Condivisione</h3><p>Crea preset, generali link e verifica le aperture.</p></div>
+        <div class="tile" data-page="password"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Modifica Password</h3><p>Aggiorna le credenziali di accesso con verifica 2FA.</p></div>
+      </div>
+    </section>
+
+    <!-- PROFILO -->
+    <section id="page-profilo" class="page">
+      <div class="page-head">
+        <div><h2>Profilo Formativo e Artistico</h2><p>I tuoi dati accademici.</p></div>
+        <button class="btn" id="btn-edit-profilo">Modifica Profilo</button>
+      </div>
+      <div class="card" id="profilo-view"><div class="spinner">Caricamento…</div></div>
+    </section>
+
+    <!-- RISORSE -->
+    <section id="page-risorse" class="page">
+      <div class="page-head">
+        <div><h2>Gestione Risorse</h2><p>Organizza i tuoi contenuti.</p></div>
+        <div class="row" style="flex:0">
+          <button class="btn btn-secondary" id="btn-new-sezione">+ Sezione</button>
+          <button class="btn" id="btn-new-risorsa">+ Carica Risorsa</button>
+        </div>
+      </div>
+      <div id="risorse-view"><div class="spinner">Caricamento…</div></div>
+    </section>
+
+    <!-- CONDIVISIONE -->
+    <section id="page-condivisione" class="page">
+      <div class="page-head">
+        <div><h2>Condivisione</h2><p>Preset pubblici e link dedicati.</p></div>
+        <div class="row" style="flex:0">
+          <button class="btn btn-secondary" id="btn-my-links">I miei Link</button>
+          <button class="btn" id="btn-new-preset">+ Aggiungi Preset</button>
+        </div>
+      </div>
+      <div id="preset-view"><div class="spinner">Caricamento…</div></div>
+    </section>
+
+    <!-- PASSWORD -->
+    <section id="page-password" class="page">
+      <div class="page-head"><div><h2>Modifica Password</h2><p>Verrà richiesto un codice 2FA.</p></div></div>
+      <div class="card" style="max-width:480px">
+        <div id="pwd-alert" class="alert"></div>
+        <form id="form-pwd">
+          <div class="field"><label>Nuova Password</label><input type="password" id="pwd-new" minlength="6" required></div>
+          <div class="field"><label>Conferma Password</label><input type="password" id="pwd-conf" minlength="6" required></div>
+          <button class="btn" type="submit">Richiedi codice 2FA</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal generico -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-head"><h3 id="modal-title">Titolo</h3><button class="close-x" id="modal-close">&times;</button></div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-foot" id="modal-foot"></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

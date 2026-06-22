@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFAM Hub — Accesso</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="brand">
+        <h1>AFAM Hub</h1>
+        <p>Gestione dell'Identità Digitale AFAM</p>
+      </div>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="form-login" class="panel">
+        <div class="field"><label>E-mail Istituzionale</label><input type="email" id="login-email" placeholder="nome.cognome@afam.it" required></div>
+        <div class="field"><label>Password</label><input type="password" id="login-password" placeholder="••••••••" required></div>
+        <button class="btn btn-block" type="submit">Accedi</button>
+        <div class="auth-links"><a href="#" data-go="recover">Password dimenticata?</a></div>
+        <div class="divider">oppure</div>
+        <div class="auth-links">Non hai un account? <a href="#" data-go="register">Registrati</a></div>
+        <div class="auth-links" style="margin-top:14px"><a href="view.html">Sei un Esaminatore Esterno? Cerca studenti →</a></div>
+      </form>
+
+      <form id="form-register" class="panel" style="display:none">
+        <div class="row">
+          <div class="field"><label>Nome</label><input id="reg-nome" required></div>
+          <div class="field"><label>Cognome</label><input id="reg-cognome" required></div>
+        </div>
+        <div class="field"><label>Codice Fiscale</label><input id="reg-cf" required></div>
+        <div class="field"><label>E-mail Istituzionale</label><input type="email" id="reg-email-ist" required></div>
+        <div class="field"><label>E-mail Personale</label><input type="email" id="reg-email-pers"></div>
+        <div class="field"><label>Cellulare</label>
+          <div style="display:flex;gap:8px">
+            <select id="reg-prefix" style="max-width:130px">
+              <option value="+39" selected>+39 (IT)</option>
+              <option value="+1">+1 (US)</option>
+              <option value="+44">+44 (UK)</option>
+              <option value="+33">+33 (FR)</option>
+              <option value="+49">+49 (DE)</option>
+              <option value="+34">+34 (ES)</option>
+            </select>
+            <input id="reg-cell" placeholder="333 1234567" required style="flex:1">
+          </div>
+        </div>
+        <div class="field"><label>Password</label><input type="password" id="reg-password" minlength="6" required></div>
+        <button class="btn btn-block" type="submit">Registrati</button>
+        <div class="auth-links"><a href="#" data-go="login">← Torna all'accesso</a></div>
+      </form>
+
+      <form id="form-recover" class="panel" style="display:none">
+        <p class="muted" style="margin-bottom:16px;font-size:14px">Inserisci la tua e-mail istituzionale per ricevere il codice di verifica.</p>
+        <div class="field"><label>E-mail Istituzionale</label><input type="email" id="rec-email" required></div>
+        <button class="btn btn-block" type="submit">Invia codice</button>
+        <div class="auth-links"><a href="#" data-go="login">← Torna all'accesso</a></div>
+      </form>
+
+      <form id="form-2fa" class="panel" style="display:none">
+        <p class="muted" style="margin-bottom:16px;font-size:14px">Abbiamo inviato un codice di verifica. Inseriscilo per continuare.<br><em>(Se non arriva un SMS, in modalità demo usa <strong>123456</strong>)</em></p>
+        <div class="field"><label>Codice 2FA</label><input id="tfa-code" maxlength="6" placeholder="123456" required></div>
+        <button class="btn btn-block" type="submit">Verifica</button>
+        <div class="auth-links"><a href="#" data-go="login">← Annulla</a></div>
+      </form>
+
+      <form id="form-newpass" class="panel" style="display:none">
+        <p class="muted" style="margin-bottom:16px;font-size:14px">Imposta una nuova password (minimo 6 caratteri).</p>
+        <div class="field"><label>Nuova Password</label><input type="password" id="np-pass" minlength="6" required></div>
+        <div class="field"><label>Conferma Password</label><input type="password" id="np-conf" minlength="6" required></div>
+        <button class="btn btn-block" type="submit">Aggiorna password</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
